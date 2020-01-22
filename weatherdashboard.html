@@ -8,84 +8,75 @@
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  <link rel="stylesheet" href="./Assets/DayPlanner.css">
-  
-
+  <link rel="stylesheet" href="./Assets/weatherdashboard.css">
+  <script src="https://kit.fontawesome.com/a8c1598f85.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
 
-    <header class="jumbotron">
-        <h1 class="display-4">Work Day Scheduler</h1>
-        <p class="lead">A simple calendar app for scheduling your work day</p>
-        <p id="dateTime" class="lead">CurrentDay</p>        
-    </header> 
-    
-    <div class="dayplanner-container">
-        <!-- add timeblocks for standard business hours (9 a.m. to 5 p.m.) -->
-        <div id="9" class="row"> 
-            <p class="time col-sm-1"> 9:00 AM</p>
-            <textarea id="9" class="col-md-10 text"></textarea>
-            <button class="btn saveBtn col-sm-1"> <img src="./Assets/save pic -192x192.png" alt="save" height="21" width="21"></img></button>
+  <header class="jumbotron">
+    <h1 class="display-4">Weather Dashboard</h1>           
+</header> 
+
+<div class="search">
+<div class="card">
+  <div class="card-header"><h5>Search for a City:</h5>
+    <form class="form-inline">
+      <input type="text" name="search" size="15" class="form-control" type="search" aria-label="Search" id="citySearchText">
+      <button type="button" class="btn btn-primary" id="citySearchBtn"><i class="fas fa-search"></i></button>
+    </form>
+  </div>
+  <ul class="list-group list-group-flush" id="searchHistoryList">
+  </ul>
+</div>
+
+<div class="col-md-6" id="searchResults">
+    <div class="container-fluid">
+        <div id="weatherCitySearched" class="card col-md-12">
+          <h3 class="cityName">
+            <span id="currentCity"></span>
+             <span id="todaysDate"></span>
+              <img src="" alt="" id="currentWeatherIcon"></h3>
+          <div class="city"></div>          
+          <div class="temperature">14</div>
+          <div class="humidity">0%</div>
+          <div class="windSpeed">0</div>
+          <div class="UV">0</div>
+      </div>
+    </div> 
+
+  <!-- <5 Day Weather Forecast -->
+    <div class="container-fluid" id="5day">
+      <div class="col-md-12">
+        <h3 id="forecastHeader">5 Day Forecast</h3> 
+         </div>
+    <div class="col-md-12 d-flex flex-row flex-wrap justify-content-start" id="forecast"></div>
         </div>
-    
-        <div id="10" class="row">
-            <p class="time col-sm-1">10:00 AM</p>
-            <textarea id="10" class="col-md-10 text"></textarea>
-            <button class="btn saveBtn col-sm-1"> <img src="./Assets/save pic -192x192.png" alt="save" height="21" width="21"></img></button>
-        </div>
-    
-        <div id="11" class="row">
-            <p class="time col-sm-1">11:00 AM</p>
-            <textarea id="11" class="col-md-10 text"></textarea>
-            <button class="btn saveBtn col-sm-1"> <img src="./Assets/save pic -192x192.png" alt="save" height="21" width="21"></img></button>
-        </div>
-        
-        <div id="12" class="row">
-            <p class="time col-sm-1">12:00 PM</p>
-            <textarea id="12" class="col-md-10 text"></textarea>
-            <button class="btn saveBtn col-sm-1"> <img src="./Assets/save pic -192x192.png" alt="save" height="21" width="21"></img></button>
-        </div>
-        
-        <div id="13" class="row time-row"> 
-            <p class="time col-sm-1"> 1:00 PM</p>
-            <textarea id="13" class="col-md-10 text"></textarea>
-            <button class="btn saveBtn col-sm-1"> <img src="./Assets/save pic -192x192.png" alt="save" height="21" width="21"></img></button>
-        </div>
-        
-        <div id="14" class="row"> 
-            <p class="time col-sm-1"> 2:00 PM</p>
-            <textarea id="14" class="col-md-10 text"></textarea>
-            <button class="btn saveBtn col-sm-1"> <img src="./Assets/save pic -192x192.png" alt="save" height="21" width="21"></img></button>
-        </div>
-       
-        <div id="15" class="row"> 
-            <p class="time col-sm-1"> 3:00 PM</p>
-            <textarea id="15" class="col-md-10 text"></textarea>
-            <button class="btn saveBtn col-sm-1"> <img src="./Assets/save pic -192x192.png" alt="save" height="21" width="21"></img></button>
-        </div>
-       
-        <div id="16" class="row"> 
-            <p class="time col-sm-1"> 4:00 PM</p>
-            <textarea id="16" class="col-md-10 text"></textarea>
-            <button class="btn saveBtn col-sm-1"> <img src="./Assets/save pic -192x192.png" alt="save" height="21" width="21"></img></button>
-        </div>
-        
-        <div id="17" class="row">
-            <p class="time col-sm-1"> 5:00 PM</p>
-            <textarea id="17" class="col-md-10 text"></textarea>
-            <button class="btn saveBtn col-sm-1"> <img src="./Assets/save pic -192x192.png" alt="save" height="21" width="21"></img></button>
-        </div>
+      
+  
     </div>
+</div>
+</div>
+
+
+
+    
+        
  
 
         
 
   
-    <!-- JavaScript -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://momentjs.com/downloads/moment.js"></script>
-    <script src="./Assets/DayPlanner.js"></script>
+    
 
 </body>
+
+<!-- JavaScript -->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://momentjs.com/downloads/moment.js"></script>
+<script src="./Assets/weatherdashboard.js"></script>
+
 </html>
