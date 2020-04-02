@@ -1,93 +1,92 @@
-body, html {
-    height: 100vh;
-    margin: 0;    
-  }
+body,
+html {
+  height: 100vh;
+  margin: 0;
+}
 
-  #search{
-    float: left;
-  }
+#search {
+  float: left;
+}
 
-.hero{
+.hero {
   margin: 1rem;
 }
 
-#fiveDayForecast{
+#fiveDayForecast {
   border: 1px solid darkgray;
   margin: 1rem 2rem 1rem 1rem;
   padding: 1rem;
-  }
-
-
-#searchContainer{
-  background-color: lightgray;
-  margin: 2rem 1rem 0 2rem; 
 }
 
-#searchHistoryList{
+#searchContainer {
+  background-color: lightgray;
+  margin: 2rem 1rem 0 2rem;
+}
+
+#searchHistoryList {
   margin: 0 2rem 1rem 2rem;
   padding-top: 0;
   background-color: lightgray;
 }
 
-#historyBtn{
+#historyBtn {
   font-size: 1rem;
-  padding: .5rem;
+  padding: 0.5rem;
   width: 23rem;
   text-align: left;
   border: 1px solid darkgray;
   background-color: white;
   width: 20rem;
- }
+}
 
- #date{
-   color: white;
- }
- 
+#date1,
+#date2,
+#date3,
+#date4,
+#date5 {
+  color: white;
+}
 
-#day-1, #day-2, #day-3, #day-4, #day-5{
+#day-1,
+#day-2,
+#day-3,
+#day-4,
+#day-5 {
   background-color: #2618f0;
-  color: white; 
+  color: white;
   margin: 3px;
 }
 
-
-#weather-form{
+#weather-form {
   padding: 12px;
   border: 1px solid darkgray;
   margin: 1rem 1rem 1rem 2rem;
   width: max-content;
 }
 
-#citySearchBtn{ 
+#citySearchBtn {
   float: right;
   margin-left: 12px;
 }
 
-#citySearchContainer{
-  margin: 0!important;
+#citySearchContainer {
+  margin: 0 !important;
 }
 
-.display-4 { 
+.display-4 {
   color: white;
   font-weight: 200;
 }
-
 
 .col-md-6 {
   flex: 0 0 65%;
   column-width: 100%;
 }
 
-
-
-
-.card-header{
+.card-header {
   padding: 0;
-  
 }
 
 .col-md-2.card-body {
   background-color: cornflowerblue;
-  
 }
-
