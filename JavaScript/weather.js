@@ -11,8 +11,8 @@ function currentWeather(city) {
 
   $.ajax({
     url: queryURL,
-    method: "GET"
-  }).then(function(response) {
+    method: "GET",
+  }).then(function (response) {
     console.log(response);
     // Printing the entire object to console
     // Constructing HTML containing the weather information
@@ -40,14 +40,21 @@ function currentWeather(city) {
     var lat = response.coord.lat;
     var lon = response.coord.lon;
 
-    //UVIndex(lat,lon);
-
     // calling the UV function
     uvIndex(lat, lon);
 
-    // Showing previous searches in sidebar.
+    // Search History Buttons
     var searchHistory = $("<button id='historyBtn'>").html(response.name);
     $("#searchHistoryList").append(searchHistory);
+
+    // Event handler for clicking the history buttons
+    $(document).on("click", "#historyBtn", function () {
+      console.log("historyBtn clicked");
+      let newCity = searchHistory;
+      console.log(newCity, "this is history btn city");
+      currentWeather(newCity);
+      fiveDayForecast(newCity);
+    });
   });
 }
 
@@ -65,31 +72,31 @@ function uvIndex(lat, lon) {
 
   $.ajax({
     url: queryURLUV,
-    method: "GET"
-  }).done(function(responseUV) {
+    method: "GET",
+  }).done(function (responseUV) {
     console.log(responseUV, "this is the responseUV");
 
     var uvNumber = responseUV.value;
     var uv = $("#uv").html(
       "UV Index: " + "<span class='uvBackground'>" + uvNumber + "</span>"
     );
-    //     $("#currentWeather").append(uv);
 
     // creating background colors based on the UV index
     if (uvNumber < 5) {
       $(".uvBackground").css({
         "background-color": "darkgreen",
-        padding: "5px"
+        color: "white",
+        padding: "5px",
       });
     } else if (uvNumber >= 5 && uvNumber <= 7) {
       $(".uvBackground").css({
         "background-color": "yellow",
-        padding: "5px"
+        padding: "5px",
       });
     } else {
       $(".uvBackground").css({
         "background-color": "red",
-        padding: "5px"
+        padding: "5px",
       });
     }
   });
@@ -106,8 +113,8 @@ function fiveDayForecast(city) {
 
   $.ajax({
     url: queryURL5,
-    method: "GET"
-  }).then(function(response5Day) {
+    method: "GET",
+  }).then(function (response5Day) {
     console.log(response5Day, "5 day ajax call");
     let dayCount = 0;
     for (let i = 0; i < response5Day.list.length; i += 8) {
@@ -138,15 +145,16 @@ function fiveDayForecast(city) {
   });
 }
 
-$(document).ready(function() {
+$(document).ready(function () {
   // Event handler for user clicking the citySearchBtn
-  $("#citySearchBtn").on("click", function(event) {
+  $("#citySearchBtn").on("click", function (event) {
     // Preventing the button from trying to submit the form
     event.preventDefault();
     // Storing the city name
-    var city = $("#city-input")
-      .val()
-      .trim();
+    var city = $("#city-input").val().trim();
+    $("#city-input").on("click", "city", function () {
+      $(this).remove();
+    });
     currentWeather(city);
     fiveDayForecast(city);
   });
